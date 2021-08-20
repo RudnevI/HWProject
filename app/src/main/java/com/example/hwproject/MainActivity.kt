@@ -28,6 +28,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val goToRecycleViewButton= findViewById<AppCompatButton>(R.id.goToRecycleView)
+        goToRecycleViewButton.setOnClickListener {
+            val intent = Intent(this, RecyclerViewActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 

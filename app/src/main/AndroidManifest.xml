@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HWProject">
-        <activity android:name=".PdfViewerActivity"></activity>
+        <activity
+            android:name=".RecyclerViewActivity"
+            android:exported="true" />
+        <activity android:name=".PdfViewerActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

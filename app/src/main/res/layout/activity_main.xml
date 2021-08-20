@@ -37,6 +37,19 @@
 
 
         />
+     <androidx.appcompat.widget.AppCompatButton
+
+         android:id="@+id/goToRecycleView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+
+         android:text="GO TO RECYCLE VIEW"
+         android:gravity="center_horizontal"
+         android:background="@color/button_color"
+
+
+
+         />
  </LinearLayout>
 
 
