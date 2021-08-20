@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <dimen name="margin_title">100dp</dimen>
+    <dimen name="title_text_size">50sp</dimen>
+    <dimen name="text_margin">14dp</dimen>
+
+    <!-- DO NOT USE IN LOGIN -->
+    <dimen name="edit_text_size">62dp</dimen>
+</resources>

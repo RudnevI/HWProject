@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HWProject</string>
+    <string name="sign_up_btn">GO TO SIGN UP SCREEN</string>
+    <string name="pdf_btn">GO TO PDF STRING</string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="open_pdf_btn">Open pdf file</string>
+
+
+</resources>
