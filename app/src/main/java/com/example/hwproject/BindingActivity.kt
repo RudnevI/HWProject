@@ -8,14 +8,15 @@ import com.example.hwproject.databinding.ActivityBindingBinding
 
 class BindingActivity : AppCompatActivity() {
 
-    private  var binding: ActivityBindingBinding? = null
+    private  lateinit var binding: ActivityBindingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityBindingBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
-        binding!!.textForBinding()
+        /*binding = ActivityBindingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+*/
+
     }
 
 }

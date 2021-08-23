@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         val goToSignUpButton = findViewById<AppCompatButton>(R.id.goToSignUpButton)
         goToSignUpButton.setOnClickListener{
             val intent = Intent(this, SignUpActivity::class.java)

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/ic_mono_mirror"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/ic_png"
+        android:title="Profile" />
+    <item
+        android:id="@+id/file"
+        android:title="File">
+        <menu>
+            <item
+                android:id="@+id/menu_file_create"
+                android:title="New" />
+            <item
+                android:id="@+id/menu_file_open"
+                android:title="Open" />
+        </menu>
+
+
+    </item>
+
+
+</menu>

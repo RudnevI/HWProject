@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HWProject">
         <activity
+            android:name=".MenuActivity"
+            android:exported="true" />
+        <activity
             android:name=".BindingActivity"
             android:exported="true" />
         <activity
