@@ -15,6 +15,8 @@ class SignUpActivity : AppCompatActivity() {
     private val LOGIN_LENGTH = R.integer.login_length
     private val INVALID_INPUT_BACKGROUND_COLOR = R.color.invalid_input_color
 
+    var cities = arrayOf("Almaty", "Astana", "Shymkent", "Aktau", "Karaganda", "Petropavlovsk")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)

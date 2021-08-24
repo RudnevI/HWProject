@@ -4,6 +4,10 @@
     <string name="pdf_btn">GO TO PDF STRING</string>
     <string name="sign_up_title">Sign Up</string>
     <string name="open_pdf_btn">Open pdf file</string>
-
+    <string name="channel_name">Menu notifier</string>
+    <string name="channel_description">Notifier</string>
+    <string name="search_hint">Search content</string>
+    <string name="go_to_menu_button">GO TO MENU</string>
+    <string name="go_to_searcher_button">GO TO SEARCHABLE ACTIVITY</string>
 
 </resources>
