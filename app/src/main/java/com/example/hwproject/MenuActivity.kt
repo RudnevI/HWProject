@@ -3,6 +3,7 @@ package com.example.hwproject
 
 import android.app.DatePickerDialog
 import android.app.SearchManager
+import android.app.TimePickerDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,6 +13,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.DatePicker
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -27,6 +29,11 @@ class MenuActivity : AppCompatActivity() {
     = DatePickerDialog.OnDateSetListener {
         datePicker: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
         println("ACADEMY: year=$year month=$month day=$dayOfMonth")
+    }
+
+    val timePickerListener = TimePickerDialog.OnTimeSetListener { view: TimePicker, hourOfDay: Int, minute: Int ->
+
+        println("ACADEMY: hour=$hourOfDay minute=$minute")
     }
 
     val calendar = Calendar.getInstance()
@@ -56,7 +63,14 @@ class MenuActivity : AppCompatActivity() {
                 showMessage("Settings")
                 true
             }
-
+            R.id.time_picker -> {
+                TimePickerDialog(this,
+                    timePickerListener,
+                    calendar.get(Calendar.HOUR_OF_DAY),
+                    calendar.get(Calendar.MINUTE), true)
+                    .show()
+                true
+            }
             R.id.menu_profile -> {
 
                 DatePickerDialog(this,

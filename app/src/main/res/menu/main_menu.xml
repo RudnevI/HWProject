@@ -26,8 +26,9 @@
 
     </item>
 
-
-
+    <item
+        android:id="@+id/time_picker"
+        android:title="Time picker"/>
 
 
 </menu>
