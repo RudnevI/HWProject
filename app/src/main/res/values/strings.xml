@@ -8,5 +8,6 @@
     <string name="channel_description">Notifier</string>
     <string name="search_hint">Search content</string>
     <string name="go_to_menu_button">GO TO MENU</string>
+    <string name="go_to_searcher_button">GO TO SEARCHABLE ACTIVITY</string>
 
 </resources>

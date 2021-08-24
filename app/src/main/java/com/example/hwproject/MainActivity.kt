@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        binding.goToSearcherActivity.setOnClickListener {
+            val intent = Intent(this, SearchableActivity::class.java)
+            startActivity(intent)
+        }
 
         val goToSignUpButton = findViewById<AppCompatButton>(R.id.goToSignUpButton)
         goToSignUpButton.setOnClickListener{
