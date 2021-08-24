@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints" />
  <LinearLayout
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
@@ -49,6 +58,15 @@
 
 
 
+         />
+     <androidx.appcompat.widget.AppCompatButton
+
+         android:id="@+id/goToMenuActivityButton"
+         android:layout_width="wrap_content"
+         android:gravity="center_horizontal"
+         android:layout_height="wrap_content"
+         android:background="@color/button_color"
+            android:text="@string/go_to_menu_button"
          />
  </LinearLayout>
 

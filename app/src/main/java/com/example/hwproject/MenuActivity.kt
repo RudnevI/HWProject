@@ -2,6 +2,8 @@ package com.example.hwproject
 
 
 import android.app.DatePickerDialog
+import android.app.SearchManager
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -12,6 +14,7 @@ import android.view.MenuItem
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.example.hwproject.NotificationBuilder
 import java.util.*
 
@@ -32,13 +35,17 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         notificationBuilder = NotificationBuilder(this)
-
+        setSupportActionBar(findViewById(R.id.my_toolbar))
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
+
+
+
         return true
     }
 

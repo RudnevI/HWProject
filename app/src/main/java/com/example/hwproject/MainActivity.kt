@@ -5,16 +5,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+import com.example.hwproject.databinding.ActivityMainBinding
 import com.example.hwproject.implementation.NavigationServiceImplementation
 import com.example.hwproject.service.NavigationService
 
 class MainActivity : AppCompatActivity() {
 
-
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val layout = binding.root
+        setContentView(layout)
+
+        binding.goToMenuActivityButton.setOnClickListener {
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
 
 
 
@@ -37,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 
 
 }
