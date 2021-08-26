@@ -1,13 +1,10 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 
 import android.app.DatePickerDialog
-import android.app.SearchManager
 import android.app.TimePickerDialog
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -16,8 +13,7 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import com.example.hwproject.NotificationBuilder
+import com.example.hwproject.R
 import java.util.*
 
 class MenuActivity : AppCompatActivity() {

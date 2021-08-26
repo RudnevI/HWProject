@@ -1,13 +1,12 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.example.hwproject.R
 import com.example.hwproject.databinding.ActivityMainBinding
-import com.example.hwproject.implementation.NavigationServiceImplementation
-import com.example.hwproject.service.NavigationService
+
 
 class MainActivity : AppCompatActivity() {
 

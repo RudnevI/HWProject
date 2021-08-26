@@ -1,4 +1,4 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 import android.app.Dialog
 import android.content.Context
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import androidx.appcompat.widget.AppCompatButton
+import com.example.hwproject.R
 
 class CustomDialog(context: Context): Dialog(context), View.OnClickListener {
 

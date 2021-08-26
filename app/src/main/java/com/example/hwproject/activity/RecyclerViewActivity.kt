@@ -1,10 +1,11 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hwproject.RecyclerAdapter.Item
+import com.example.hwproject.R
+import com.example.hwproject.activity.RecyclerAdapter.Item
 
 class RecyclerViewActivity : AppCompatActivity() {
 

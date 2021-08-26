@@ -1,12 +1,11 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
-import java.io.File
-import java.lang.Exception
+import com.example.hwproject.R
 
 class PdfViewerActivity : AppCompatActivity() {
 

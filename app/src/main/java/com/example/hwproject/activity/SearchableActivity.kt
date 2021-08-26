@@ -1,15 +1,11 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
-import android.app.DatePickerDialog
 import android.app.SearchManager
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.widget.SearchView
+import com.example.hwproject.R
 
 import com.example.hwproject.databinding.ActivitySearchableBinding
 import java.util.*

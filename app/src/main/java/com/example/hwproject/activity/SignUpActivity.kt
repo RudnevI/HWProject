@@ -1,13 +1,11 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.graphics.toColor
-import com.example.hwproject.customwidgets.LoginField
+import com.example.hwproject.R
 
 class SignUpActivity : AppCompatActivity() {
 

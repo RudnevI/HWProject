@@ -1,4 +1,4 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 
 import android.os.Bundle

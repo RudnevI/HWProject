@@ -1,7 +1,6 @@
-package com.example.hwproject
+package com.example.hwproject.activity
 
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 
@@ -9,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hwproject.R
 
 class RecyclerAdapter(private val data: ArrayList<Item>) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
@@ -18,7 +18,7 @@ class RecyclerAdapter(private val data: ArrayList<Item>) :
         private val textView: TextView = view.findViewById(R.id.recycler_title)
         private  val imageView: ImageView = view.findViewById(R.id.recycler_image)
 
-        fun setData(item:Item) {
+        fun setData(item: Item) {
             textView.text = item.title
             imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, item.imageId))
 
