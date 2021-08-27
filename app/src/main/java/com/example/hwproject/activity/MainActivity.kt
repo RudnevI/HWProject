@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val goToRecycleViewButton= findViewById<AppCompatButton>(R.id.goToRecycleView)
-        goToRecycleViewButton.setOnClickListener {
-            val intent = Intent(this, RecyclerViewActivity::class.java)
+        val goToForegroundServiceButton= findViewById<AppCompatButton>(R.id.goToForegroundService)
+        goToForegroundServiceButton.setOnClickListener {
+            val intent = Intent(this, ServiceActivity::class.java)
             startActivity(intent)
         }
 

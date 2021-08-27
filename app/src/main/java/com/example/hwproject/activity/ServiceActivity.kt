@@ -1,15 +1,20 @@
 package com.example.hwproject.activity
 
 
-import android.app.ActivityManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 
 
 import com.example.hwproject.R
@@ -26,9 +31,10 @@ class ServiceActivity : AppCompatActivity() {
         findViewById<Button>(R.id.launchForegroundService).setOnClickListener {
             val intent = Intent(this, TestForegroundService::class.java)
             startService(intent)
+            updateStatus()
         }
 
-        findViewById<Button>(R.id.launchForegroundService).setOnClickListener {
+        findViewById<Button>(R.id.stopForegroundService).setOnClickListener {
             val intent = Intent(this, TestForegroundService::class.java)
             intent.action = TestForegroundService.ACTION_STOP
 
@@ -62,4 +68,7 @@ class ServiceActivity : AppCompatActivity() {
         }
         return  false
     }
+
+
+
 }

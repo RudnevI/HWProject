@@ -1,10 +1,17 @@
 package com.example.hwproject.service
 
-import android.app.Service
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Build
 
 import android.os.IBinder
+import androidx.core.app.NotificationCompat
 import com.example.hwproject.BuildConfig
+import com.example.hwproject.R
+import com.example.hwproject.activity.MainActivity
 
 
 class TestForegroundService : Service() {
@@ -23,7 +30,54 @@ class TestForegroundService : Service() {
         if (action != null && action == ACTION_STOP) {
             stopSelf()
         }
+        showNotification()
         return START_STICKY
+    }
+    private var icon : Bitmap? = null
+    private var notification: Notification? = null
+    private var notificationManager: NotificationManager? = null
+    private val notificationId = 123
+
+
+    private fun showNotification(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val intentMainLanding = Intent(this, MainActivity::class.java)
+            val pendingIntent =
+                PendingIntent.getActivity(this, 0, intentMainLanding, 0)
+            icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
+            if (notificationManager == null) {
+                notificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                assert(notificationManager != null)
+                notificationManager?.createNotificationChannelGroup(
+                    NotificationChannelGroup("chats_group", "Chats")
+                )
+                val notificationChannel =
+                    NotificationChannel("service_channel", "Service Notifications",
+                        NotificationManager.IMPORTANCE_MIN)
+                notificationChannel.enableLights(false)
+                notificationChannel.lockscreenVisibility = Notification.VISIBILITY_SECRET
+                notificationManager?.createNotificationChannel(notificationChannel)
+            }
+            val builder = NotificationCompat.Builder(this, "service_channel")
+
+            builder.setContentTitle(StringBuilder(resources.getString(R.string.app_name)).append(" service is running").toString())
+                .setTicker(StringBuilder(resources.getString(R.string.app_name)).append("service is running").toString())
+                .setContentText("Touch to open") //                    , swipe down for more options.
+                .setSmallIcon(R.drawable.ic_mono_mirror)
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setWhen(0)
+                .setOnlyAlertOnce(true)
+                .setContentIntent(pendingIntent)
+                .setOngoing(true)
+            if (icon != null) {
+                builder.setLargeIcon(Bitmap.createScaledBitmap(icon!!, 128, 128, false))
+            }
+            builder.color = resources.getColor(R.color.purple_200)
+            notification = builder.build()
+            startForeground(notificationId, notification)
+        }
     }
 
 }
