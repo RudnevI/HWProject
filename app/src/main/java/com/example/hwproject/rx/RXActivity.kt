@@ -8,15 +8,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hwproject.R
+import com.example.hwproject.rx.model.Comment
+import com.example.hwproject.rx.model.Comments
 import com.example.hwproject.rx.model.User
 import com.example.hwproject.rx.model.Users
+import com.example.hwproject.rx.recycler.CommentsAdapter
 import com.example.hwproject.rx.recycler.RecyclerAdapter
 import com.example.hwproject.rx.retrofit.RetrofitClient
+import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
+
 import kotlin.collections.ArrayList
 
 class RXActivity : AppCompatActivity() {
@@ -24,6 +30,7 @@ class RXActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: RecyclerAdapter
     private lateinit var progressBar: ProgressBar
+    lateinit var commentsAdapter: CommentsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rxactivity)
@@ -33,10 +40,50 @@ class RXActivity : AppCompatActivity() {
         adapter = RecyclerAdapter()
         recyclerView.adapter = adapter
 
+        commentsAdapter = CommentsAdapter()
+
 
         progressBar = findViewById(R.id.progressBar)
 
         fetchUsers()
+    }
+
+    private inner class Wrapper(
+        val users: ArrayList<User>,
+        val comments: ArrayList<Comment>
+    )
+
+    private fun fetchData() {
+
+        progressBar.visibility = View.VISIBLE
+
+        Observable.zip(RetrofitClient.getUsers(),
+        RetrofitClient.getComments(),
+            { t, u -> Wrapper(t.data, u.data) }
+            )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : Observer<Wrapper>{
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onNext(t: Wrapper) {
+                   hideProgress()
+                    adapter.setData(t.users)
+                    commentsAdapter.setData(t.comments)
+                }
+
+                override fun onError(e: Throwable) {
+
+                }
+
+                override fun onComplete() {
+
+                }
+
+            })
+
     }
 
     private fun fetchUsers() {
@@ -44,13 +91,13 @@ class RXActivity : AppCompatActivity() {
         RetrofitClient.getUsers()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object: Observer<Users>{
+            .subscribe(object : Observer<Users> {
                 override fun onSubscribe(d: Disposable) {
 
                 }
 
                 override fun onNext(t: Users) {
-                   setUsers(t.data)
+                    setUsers(t.data)
                 }
 
                 override fun onError(e: Throwable) {

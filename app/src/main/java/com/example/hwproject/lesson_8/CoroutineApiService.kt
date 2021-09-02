@@ -1,4 +1,4 @@
-package com.example.hwproject.rx.retrofit
+package com.example.hwproject.lesson_8
 
 import com.example.hwproject.rx.model.Comments
 import com.example.hwproject.rx.model.User
@@ -7,16 +7,16 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface ApiService {
+interface CoroutineApiService {
 
     @GET("/public/v1/users")
-    fun getUsers():Observable<Users>
+    suspend fun getUsers(): Users
 
     @POST("/public/v1/users")
-    fun createUser(user: User): Observable<User>
+    suspend fun createUser(user: User): User
 
     @GET("/public/v1/comments")
-    fun getComments(): Observable<Comments>
+    suspend fun getComments(): Comments
 
 
 }

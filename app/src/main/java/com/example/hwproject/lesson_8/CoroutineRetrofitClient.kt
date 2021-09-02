@@ -1,11 +1,6 @@
-package com.example.hwproject.rx.retrofit
+package com.example.hwproject.lesson_8
 
-import com.example.hwproject.rx.model.Comment
-import com.example.hwproject.rx.model.Comments
 import com.example.hwproject.rx.model.User
-import com.example.hwproject.rx.model.Users
-import io.reactivex.Observable
-import io.reactivex.ObservableSource
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -16,21 +11,20 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-
-object RetrofitClient {
+object CoroutineRetrofitClient {
 
     private val service = Retrofit.Builder()
         .baseUrl("https://gorest.co.in")
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+
         .client(httpClient)
         .build()
-        .create(ApiService::class.java)
+        .create(CoroutineApiService::class.java)
 
-    fun getUsers(): Observable<Users> = this.service.getUsers()
+    suspend fun getUsers() = this.service.getUsers()
 
-    fun createUser(user: User):Observable<User> = this.service.createUser(user)
-    fun getComments(): Observable<Comments> = this.service.getComments()
+    suspend fun createUser(user: User) = this.service.createUser(user)
+    suspend fun getComments()= this.service.getComments()
 
     private val httpClient: OkHttpClient
     get() {
