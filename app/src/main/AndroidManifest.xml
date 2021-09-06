@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".lesson_9.data.ActivityMVVM"
+            android:exported="true" />
+        <activity
+            android:name=".fragments.abctransactionfragments.ABCTransactionActivity"
+            android:exported="true" />
+        <activity
             android:name=".lesson_8.CoroutineActivity"
             android:exported="true" />
         <activity

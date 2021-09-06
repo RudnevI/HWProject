@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hwproject.R
 import com.example.hwproject.rx.model.Comment
-import com.example.hwproject.rx.model.Comments
 import com.example.hwproject.rx.model.User
 import com.example.hwproject.rx.model.Users
 import com.example.hwproject.rx.recycler.CommentsAdapter
@@ -19,11 +18,7 @@ import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
-
-import kotlin.collections.ArrayList
 
 class RXActivity : AppCompatActivity() {
 
@@ -32,19 +27,16 @@ class RXActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     lateinit var commentsAdapter: CommentsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rxactivity)
+
         recyclerView = findViewById(R.id.userRecycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         adapter = RecyclerAdapter()
         recyclerView.adapter = adapter
-
         commentsAdapter = CommentsAdapter()
-
-
         progressBar = findViewById(R.id.progressBar)
-
         fetchUsers()
     }
 

@@ -2,11 +2,20 @@ package com.example.hwproject.lesson_8
 
 
 import android.os.Bundle
+import android.os.Looper
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun
 import com.example.hwproject.R
 import com.example.hwproject.databinding.ActivityCoroutineBinding
 import com.example.hwproject.rx.recycler.RecyclerAdapter
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import java.lang.Exception
 
 class CoroutineActivity : AppCompatActivity() {
@@ -15,29 +24,37 @@ class CoroutineActivity : AppCompatActivity() {
     private val coroutineScope = CoroutineScope(Dispatchers.Main + job)
     private lateinit var binding: ActivityCoroutineBinding
     private val adapter = RecyclerAdapter()
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCoroutineBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        progressBar = binding.progressBar
 
         loadUsers()
     }
 
     private fun loadUsers() {
-        job = CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = CoroutineRetrofitClient.getUsers()
-                withContext(Dispatchers.Main) {
+        val client = CoroutineRetrofitClient()
 
-                    if (response.data.isNotEmpty()) {
-                        adapter.setData(response.data)
+        binding.progressBar.visibility = View.VISIBLE
+        job = CoroutineScope(Dispatchers.Main).launch {
+
+            client.getUsers().onStart {
+                binding.progressBar.visibility = View.VISIBLE
+            }.catch { exception -> Toast.makeText(this@CoroutineActivity, exception.message, Toast.LENGTH_LONG).show() }
+                .onCompletion {
+                    binding.progressBar.visibility = View.GONE
+                }.collect {
+                    withContext(Dispatchers.Main) {
+                        println("#CoroutineActivity: ${Looper.myLooper() == Looper.getMainLooper()}")
+                        adapter.setData(it.data)
                     }
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+
+
         }
     }
 
