@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".lesson_9.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".lesson_9.data.ActivityMVVM"
             android:exported="true" />
         <activity

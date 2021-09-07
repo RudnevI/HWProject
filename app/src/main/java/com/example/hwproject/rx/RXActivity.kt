@@ -45,7 +45,7 @@ class RXActivity : AppCompatActivity() {
         val comments: ArrayList<Comment>
     )
 
-    private fun fetchData() {
+/*    private fun fetchData() {
 
         progressBar.visibility = View.VISIBLE
 
@@ -76,7 +76,7 @@ class RXActivity : AppCompatActivity() {
 
             })
 
-    }
+    }*/
 
     private fun fetchUsers() {
         progressBar.visibility = View.VISIBLE

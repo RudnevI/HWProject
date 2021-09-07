@@ -6,16 +6,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hwproject.R
+import com.example.hwproject.lesson_9.data.LoginDataSource
 import com.example.hwproject.lesson_9.data.LoginRepository
 import com.example.hwproject.lesson_9.data.Result
+import com.example.hwproject.lesson_9.state.LoginState
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
-    private val _loginForm = MutableLiveData<LoginFormState>()
-    val loginFormState: LiveData<LoginFormState> = _loginForm
+    private val _state = MutableLiveData<LoginState>()
+    val state: LiveData<LoginState> = _state
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
+    /* private val _loginResult = MutableLiveData<LoginResult>()
+     val loginResult: LiveData<LoginResult> = _loginResult*/
 
     fun login(username: String, password: String) {
 
@@ -23,38 +25,48 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
         if (result is Result.Success) {
 
-            _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+            _state.value =
+                LoginState.Success(success = LoggedInUserView(displayName = result.data.displayName))
 
 
         } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
+            _state.value = LoginState.SignUpError(R.string.login_failed)
         }
 
 
     }
-    fun loginDataChanged(username: String, password: String) {
-        if(!isUserNameValid(username)) {
-            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
-        }
-        else if(!isPasswordValid(password)) {
-            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
-        }
-        else {
-            _loginForm.value = LoginFormState(isDataValid = true)
+
+    fun emailCheck(email: String) {
+        if (!isUserNameValid(email)) {
+            _state.value = LoginState.LoginError(R.string.invalid_username)
+        } else {
+            //WE WILL WRITE A REALLY GOOD PIECE OF CODE HERE, TRUST ME
         }
     }
 
-    private fun isUserNameValid(username: String) : Boolean {
-        return if(username.contains('@')) {
+    fun passwordCheck(password: String) {
+        if (isPasswordValid(password)) {
+            _state.value = LoginState.PasswordError(R.string.invalid_password)
+
+        } else {
+            //WE WILL WRITE A REALLY GOOD PIECE OF CODE HERE, TRUST ME
+        }
+    }
+
+
+    fun checkData() {
+
+    }
+
+    private fun isUserNameValid(username: String): Boolean {
+        return if (username.contains('@')) {
             Patterns.EMAIL_ADDRESS.matcher(username).matches()
-        }
-        else {
+        } else {
             username.isNotBlank()
         }
     }
 
-    private fun isPasswordValid(password: String) : Boolean {
+    private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
     }
 

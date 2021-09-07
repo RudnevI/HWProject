@@ -27,7 +27,7 @@ object RetrofitClient {
         .build()
         .create(ApiService::class.java)
 
-    fun getUsers(): Observable<> = this.service.getUsers()
+    fun getUsers() = this.service.getUsers()
 
     fun createUser(user: User) = this.service.createUser(user)
 
