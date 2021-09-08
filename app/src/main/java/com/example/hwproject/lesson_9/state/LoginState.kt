@@ -10,6 +10,8 @@ sealed class LoginState {
     class SignUpError(val errorInfo: Int): LoginState()
     class Success(val success: LoggedInUserView? = null): LoginState()
     object DataIsValid: LoginState()
+    object PasswordIsValid: LoginState()
+    object UsernameIsValid: LoginState()
 
 
 }

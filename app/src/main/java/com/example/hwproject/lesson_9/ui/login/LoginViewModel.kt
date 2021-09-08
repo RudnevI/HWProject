@@ -23,33 +23,58 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
         val result = loginRepository.login(username, password)
 
-        if (result is Result.Success) {
-
-            _state.value =
-                LoginState.Success(success = LoggedInUserView(displayName = result.data.displayName))
 
 
-        } else {
-            _state.value = LoginState.SignUpError(R.string.login_failed)
+
+        if(isUserNameValid(username) && isPasswordValid(password)) {
+
+            _state.value = LoginState.DataIsValid
+            if(result is Result.Success) {
+                _state.value =
+                    LoginState.Success(success = LoggedInUserView(displayName = result.data.displayName))
+            }
+        }
+
+        else {
+            if(!isUserNameValid(username))  {
+                _state.value = LoginState.LoginError(R.string.invalid_username)
+            }
+            else if(!isPasswordValid(password)) {
+                _state.value = LoginState.PasswordError(R.string.invalid_password)
+            }
+            else {
+                _state.value = LoginState.SignUpError(R.string.login_failed)
+            }
         }
 
 
+    }
+
+
+    fun isDataValid(email: String, password: String) : Boolean {
+        if(isUserNameValid(email) && isPasswordValid(password)) {
+            _state.value = LoginState.DataIsValid
+            return true
+        }
+        else {
+            return false
+        }
     }
 
     fun emailCheck(email: String) {
         if (!isUserNameValid(email)) {
             _state.value = LoginState.LoginError(R.string.invalid_username)
         } else {
-            //WE WILL WRITE A REALLY GOOD PIECE OF CODE HERE, TRUST ME
+            _state.value = LoginState.UsernameIsValid
         }
     }
 
     fun passwordCheck(password: String) {
-        if (isPasswordValid(password)) {
+        if (!isPasswordValid(password)) {
             _state.value = LoginState.PasswordError(R.string.invalid_password)
 
         } else {
-            //WE WILL WRITE A REALLY GOOD PIECE OF CODE HERE, TRUST ME
+            _state.value = LoginState.PasswordIsValid
         }
     }
 
