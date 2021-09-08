@@ -168,6 +168,7 @@ class ActivityMVVM : AppCompatActivity() {
     private fun toggleLoginButton(isEnabled: Boolean) {
         login.isEnabled = isEnabled
     }
+
 }
 
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {

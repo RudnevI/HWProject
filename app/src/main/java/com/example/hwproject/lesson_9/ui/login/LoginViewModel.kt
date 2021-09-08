@@ -52,12 +52,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
 
     fun isDataValid(email: String, password: String) : Boolean {
-        if(isUserNameValid(email) && isPasswordValid(password)) {
+        return if(isUserNameValid(email) && isPasswordValid(password)) {
             _state.value = LoginState.DataIsValid
-            return true
-        }
-        else {
-            return false
+            true
+        } else {
+            false
         }
     }
 
@@ -79,9 +78,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
 
-    fun checkData() {
 
-    }
 
     private fun isUserNameValid(username: String): Boolean {
         return if (username.contains('@')) {
@@ -94,5 +91,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
     }
+
+
 
 }
