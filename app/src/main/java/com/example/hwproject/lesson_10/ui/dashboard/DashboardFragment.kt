@@ -6,18 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.hwproject.databinding.FragmentDashboardBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class DashboardFragment : Fragment() {
 
 
-    private val dashboardViewModel: DashboardViewModel by activityViewModels()
+
     private var _binding: FragmentDashboardBinding? = null
+    private val paymentsViewModel: PaymentsViewModel by sharedViewModel()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,6 +31,10 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.increment.setOnClickListener {
+            paymentsViewModel.id++
+        }
 
        binding.goToPayments.setOnClickListener {
            val direction = DashboardFragmentDirections.actionNavigationDashboardToPaymentsFragment()

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.hwproject.R
 import com.example.hwproject.lesson_10.model.PaymentsModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaymentsFragment : Fragment() {
@@ -19,7 +20,7 @@ class PaymentsFragment : Fragment() {
 
 
     private val paymentsModel: PaymentsModel by inject()
-    private  val paymentsViewModel: PaymentsViewModel by viewModel()
+    private  val paymentsViewModel: PaymentsViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
