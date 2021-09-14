@@ -1,11 +1,14 @@
 package com.example.hwproject.lesson_11
 
 
-import com.example.domain.dagger.RepositoryModule
 import dagger.Component
+import dagger.Provides
+import dagger.hilt.DefineComponent
+
 
 @Component(modules = [RepositoryModule:: class])
 interface RepositoryComponent {
 
+    @Provides
     fun injectIntoActivity(activity: DaggerActivity)
 }
