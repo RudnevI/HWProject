@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:buttonColor="@color/purple_200"
         app:buttonText="@string/hello_blank_fragment"
-        app:buttonTextSize="36dp"
+        app:buttonTextSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

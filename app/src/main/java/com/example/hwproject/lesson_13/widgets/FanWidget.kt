@@ -31,7 +31,7 @@ class FanWidget @JvmOverloads constructor(
         val startAngle = Math.PI * (9 / 8.0)
         val angle = startAngle + pos.ordinal * (Math.PI / 4)
         x = (radius * kotlin.math.cos(angle)).toFloat() + width / 2
-        y = (radius * kotlin.math.cos(angle)).toFloat() + height / 2
+        y = (radius * kotlin.math.sin(angle)).toFloat() + height / 2
 
     }
 
@@ -41,18 +41,35 @@ class FanWidget @JvmOverloads constructor(
         canvas?.drawCircle(
             (width / 2).toFloat(),
             (height / 2).toFloat(),
-            radius, paint
+            radius,
+            paint
         )
         val markerRadius = radius + RADIUS_OFFSET_INDICATOR
         pointPosition.computeXYForSpeed(fanSpeed, markerRadius)
         paint.color = Color.BLACK
-        canvas?.drawCircle(pointPosition.x, pointPosition.y, radius, paint)
+        canvas?.drawCircle(pointPosition.x, pointPosition.y, radius / 12, paint)
         val labelRadius = radius + RADIUS_OFFSET_LABEL
         for (i in Speed.values()) {
             pointPosition.computeXYForSpeed(i, labelRadius)
             val label = resources.getString(i.label)
             canvas?.drawText(label, pointPosition.x, pointPosition.y, paint)
         }
+    }
+
+    init {
+        isClickable = true
+
+    }
+
+    override fun performClick(): Boolean {
+
+        if (super.performClick()) return true
+
+        fanSpeed = fanSpeed.next()
+        contentDescription = resources.getString(fanSpeed.label)
+
+        invalidate()
+        return true
     }
 
     companion object {
@@ -64,7 +81,15 @@ class FanWidget @JvmOverloads constructor(
             OFF(R.string.fan_off),
             LOW(R.string.fan_low),
             MEDIUM(R.string.fan_medium),
-            HIGH(R.string.fan_high)
+            HIGH(R.string.fan_high);
+
+            fun next() = when (this) {
+                OFF -> LOW
+                LOW -> MEDIUM
+                MEDIUM -> HIGH
+                HIGH -> OFF
+
+            }
 
         }
     }
