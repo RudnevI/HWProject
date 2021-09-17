@@ -18,6 +18,7 @@ class ABCTransactionActivity : AppCompatActivity(), FragmentA.CallbacksFragmentA
                 .add(R.id.fragment_container_abc, fragment)
                 .addToBackStack(null)
                 .commit()
+
         }
     }
 

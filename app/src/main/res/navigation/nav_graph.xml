@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/fragmentAUsingNavGraph">
 
     <fragment
-        android:id="@+id/startFragment"
-        android:name="com.example.hwproject.fragments.StartFragment"
-        android:label="fragment_start"
-        tools:layout="@layout/fragment_example"
-        >
+        android:id="@+id/fragmentAUsingNavGraph"
+        android:name="com.example.hwproject.fragments.abcnavigation.FragmentAUsingNavGraph"
+        android:label="fragment_a_using_nav_graph"
+        tools:layout="@layout/fragment_a_using_nav_graph" >
         <action
-            android:id="@+id/action_startFragment_to_finishFragment2"
-            app:destination="@id/finishFragment" />
+            android:id="@+id/action_fragmentAUsingNavGraph_to_fragmentBUsingNavGraph"
+            app:destination="@id/fragmentBUsingNavGraph" />
     </fragment>
     <fragment
-        android:id="@+id/finishFragment"
-        android:name="com.example.hwproject.fragments.FinishFragment"
-        android:label="fragment_finish"
-        tools:layout="@layout/fragment_finish"
-        >
-        <argument android:name="title"
-            app:argType="string" />
-        <argument
-            android:name="subtitle"
-            app:argType="string"
-            app:nullable="true" />
+        android:id="@+id/fragmentBUsingNavGraph"
+        android:name="com.example.hwproject.fragments.abcnavigation.FragmentBUsingNavGraph"
+        android:label="fragment_b_using_nav_graph"
+        tools:layout="@layout/fragment_b_using_nav_graph" >
+        <action
+            android:id="@+id/action_fragmentBUsingNavGraph_to_fragmentCUsingNavGraph"
+            app:destination="@id/fragmentCUsingNavGraph" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentCUsingNavGraph"
+        android:name="com.example.hwproject.fragments.abcnavigation.FragmentCUsingNavGraph"
+        android:label="fragment_c_using_nav_graph"
+        tools:layout="@layout/fragment_c_using_nav_graph" />
 </navigation>
