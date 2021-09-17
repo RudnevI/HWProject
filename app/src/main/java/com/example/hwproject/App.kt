@@ -1,13 +1,9 @@
 package com.example.hwproject
 
 import android.app.Application
-import com.example.hwproject.lesson_10.module.paymentsModule
-import dagger.hilt.android.HiltAndroidApp
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
+import com.example.hwproject.lesson_12.room.Repository
 
-@HiltAndroidApp
+
 class App: Application() {
 
     override fun onCreate() {
@@ -20,6 +16,8 @@ class App: Application() {
 
 
         }*/
+
+        Repository.initialize(this)
 
 
     }
