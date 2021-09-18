@@ -14,16 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".fragments.abcnavigation.NavigationHostActivity"
+            android:name=".worker.PeriodicBroadcastActivity"
             android:exported="true">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+
+        <receiver android:name=".worker.PeriodicBroadcastReceiver">
+
+        </receiver>
+
+        <activity
+            android:name=".fragments.abcnavigation.NavigationHostActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".lesson_12.PreferenceActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".lesson_12.RoomActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".lesson_10.NavigationActivity"
             android:exported="true"
@@ -33,20 +47,14 @@
             android:exported="true" />
         <activity
             android:name=".fragments.abctransactionfragments.ABCTransactionActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".lesson_8.CoroutineActivity"
             android:exported="true" />
         <activity
             android:name=".rx.RXActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.BroadcastActivity"
@@ -54,7 +62,6 @@
         <activity
             android:name=".activity.ServiceActivity"
             android:exported="true" />
-
 
         <meta-data
             android:name="android.app.searchable"
