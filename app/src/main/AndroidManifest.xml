@@ -14,24 +14,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".worker.PeriodicBroadcastActivity"
+            android:name=".homework_bound_service.BoundActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+       <service android:name=".homework_bound_service.BoundService"/>
+        <activity
+            android:name=".worker.PeriodicBroadcastActivity"
+            android:exported="true">
 
+        </activity>
 
-        <receiver android:name=".worker.PeriodicBroadcastReceiver">
-
-        </receiver>
+        <receiver android:name=".worker.PeriodicBroadcastReceiver" />
 
         <activity
             android:name=".fragments.abcnavigation.NavigationHostActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".lesson_12.PreferenceActivity"
             android:exported="true" />
@@ -47,15 +49,13 @@
             android:exported="true" />
         <activity
             android:name=".fragments.abctransactionfragments.ABCTransactionActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".lesson_8.CoroutineActivity"
             android:exported="true" />
         <activity
             android:name=".rx.RXActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".activity.BroadcastActivity"
             android:exported="true" />
