@@ -16,11 +16,7 @@
         <activity
             android:name=".fragments.abcnavigation.NavigationHostActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".lesson_12.PreferenceActivity"
@@ -45,7 +41,13 @@
             android:exported="true" />
         <activity
             android:name=".rx.RXActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.BroadcastActivity"
             android:exported="true" />

@@ -7,8 +7,6 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun
-import com.example.hwproject.R
 import com.example.hwproject.databinding.ActivityCoroutineBinding
 import com.example.hwproject.rx.recycler.RecyclerAdapter
 import kotlinx.coroutines.*
@@ -16,7 +14,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
-import java.lang.Exception
 
 class CoroutineActivity : AppCompatActivity() {
 
@@ -40,7 +37,7 @@ class CoroutineActivity : AppCompatActivity() {
         val client = CoroutineRetrofitClient()
 
         binding.progressBar.visibility = View.VISIBLE
-        job = CoroutineScope(Dispatchers.Main).launch {
+        job = coroutineScope.launch {
 
             client.getUsers().onStart {
                 binding.progressBar.visibility = View.VISIBLE
@@ -56,6 +53,8 @@ class CoroutineActivity : AppCompatActivity() {
 
 
         }
+
+
     }
 
 

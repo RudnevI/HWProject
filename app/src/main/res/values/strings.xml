@@ -26,4 +26,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="create_user_button_string">CREATE USER</string>
+    <string name="user_name_label">Username:</string>
+    <string name="user_email_label">Email:</string>
+    <string name="user_password_label">Password</string>
+
+    <string-array name="gender">
+        <item>MALE</item>
+        <item>FEMALE</item>
+        <item>OTHER</item>
+    </string-array>
 </resources>

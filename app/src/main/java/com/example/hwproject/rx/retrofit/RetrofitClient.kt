@@ -1,12 +1,6 @@
 package com.example.hwproject.rx.retrofit
 
-import com.example.hwproject.rx.model.Comments
 import com.example.hwproject.rx.model.User
-import com.example.hwproject.rx.model.Users
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -14,12 +8,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 
 object RetrofitClient {
 
-    val service = Retrofit.Builder()
+    private val service: ApiService = Retrofit.Builder()
         .baseUrl("https://gorest.co.in")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

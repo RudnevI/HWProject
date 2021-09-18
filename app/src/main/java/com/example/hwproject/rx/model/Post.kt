@@ -5,13 +5,13 @@ import java.util.*
 data class Users(val data: ArrayList<User>)
 
 data class User(
-    val id: Int,
+    var id: Int = 0,
     val name: String,
     val email: String,
     val gender: Gender,
-    val status: String,
-    val field: String? = null,
-    val message: String? = null
+    var status: String? = null,
+    var field: String? = null,
+    var message: String? = null
 )
 enum class Gender {
     male,
