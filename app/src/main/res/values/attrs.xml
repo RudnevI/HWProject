@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FeedbackWidget">
+        <attr name="titleHint" format="string" />
+        <attr name="buttonText" format="string" />
+        <attr name="buttonColor" format="color" />
+        <attr name="buttonTextSize" format="dimension" />
+    </declare-styleable>
+    <integer name="google_play_services_version">4</integer>
+</resources>

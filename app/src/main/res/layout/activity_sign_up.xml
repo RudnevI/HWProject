@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity"
+    tools:context=".activity.SignUpActivity"
 
 
     >
@@ -65,5 +65,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="choose city"
+        app:layout_constraintEnd_toEndOf="@+id/signUpButton"
+        app:layout_constraintStart_toStartOf="@+id/signUpButton"
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Choose city"
+        app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextView2"
+        app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
