@@ -9,10 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hwproject.R
-import com.example.hwproject.rx.model.Comment
-import com.example.hwproject.rx.model.Gender
-import com.example.hwproject.rx.model.User
-import com.example.hwproject.rx.model.Users
+import com.example.hwproject.rx.model.*
 import com.example.hwproject.rx.recycler.CommentsAdapter
 import com.example.hwproject.rx.recycler.RecyclerAdapter
 import com.example.hwproject.rx.retrofit.RetrofitClient
@@ -31,6 +28,7 @@ class RXActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
     private lateinit var createUserButton: AppCompatButton
 
     private var userGenderSelected: Gender = Gender.male
+    lateinit var commentRecyclerView: RecyclerView
 
 
 
@@ -62,6 +60,12 @@ class RXActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
         createUserButton = findViewById(R.id.create_user_button)
         createUserButton.setOnClickListener {
             addUser()
+        }
+
+        findViewById<AppCompatButton>(R.id.button_switch_user_comment).setOnClickListener {
+            recyclerView.adapter = commentsAdapter
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            getComments()
         }
     }
 
@@ -102,6 +106,31 @@ class RXActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
             })
 
     }*/
+
+    private fun getComments() {
+        progressBar.visibility = View.VISIBLE
+        RetrofitClient.getComments()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object: Observer<Comments>{
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onNext(t: Comments) {
+                    setComments(t.data)
+                }
+
+                override fun onError(e: Throwable) {
+
+                }
+
+                override fun onComplete() {
+
+                }
+
+            })
+    }
 
     private fun fetchUsers() {
         progressBar.visibility = View.VISIBLE
@@ -162,6 +191,7 @@ class RXActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
 
                 override fun onComplete() {
                     fetchUsers()
+                    hideProgress()
                 }
 
 
@@ -170,6 +200,12 @@ class RXActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
 
     private fun setUsers(list: ArrayList<User>) {
         adapter.setData(list)
+
+    }
+
+    private fun setComments(list: ArrayList<Comment>) {
+        commentsAdapter.setData(list)
+
     }
 
     private fun hideProgress() {

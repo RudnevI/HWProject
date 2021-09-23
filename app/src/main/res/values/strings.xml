@@ -31,6 +31,7 @@
     <string name="user_email_label">Email:</string>
     <string name="user_password_label">Password</string>
     <string name="bound_service_call_button">Click to call a function\n from bound service</string>
+    <string name="switch_user_comment_button_text">SWITCH USERS/COMMENTS</string>
 
     <string-array name="gender">
         <item>MALE</item>
